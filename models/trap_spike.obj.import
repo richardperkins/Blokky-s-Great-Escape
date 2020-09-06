@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/trap_spike.obj-6b712ff960f79b638420ff22cf78b004.mesh"
+
+[deps]
+
+files=[ "res://.import/trap_spike.obj-6b712ff960f79b638420ff22cf78b004.mesh" ]
+
+source_file="res://models/trap_spike.obj"
+dest_files=[ "res://.import/trap_spike.obj-6b712ff960f79b638420ff22cf78b004.mesh", "res://.import/trap_spike.obj-6b712ff960f79b638420ff22cf78b004.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

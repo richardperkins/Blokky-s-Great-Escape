@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://images/ui/icon_wait.png" type="Texture" id=1]
+[ext_resource path="res://images/ui/icon_star.png" type="Texture" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=3]
+[ext_resource path="res://command_blocks/CommandBlockSelect.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.203922, 0.290196, 0.364706, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Wait" type="Button"]
+margin_top = 162.0
+margin_right = 236.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/normal = SubResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 6.64642
+margin_top = 7.0
+margin_right = 42.6464
+margin_bottom = 43.0
+texture = ExtResource( 1 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Remove" type="TextureButton" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -18.0
+margin_bottom = 18.0
+texture_normal = ExtResource( 2 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="."]
+margin_left = 162.0
+margin_top = 7.0
+margin_right = 226.0
+margin_bottom = 41.0
+theme = ExtResource( 3 )
+min_value = 1.0
+value = 1.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

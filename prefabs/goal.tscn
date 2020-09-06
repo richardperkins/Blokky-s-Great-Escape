@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://models/goal.escn" type="PackedScene" id=1]
+[ext_resource path="res://materials/goal.tres" type="Material" id=2]
+[ext_resource path="res://materials/goal_chevron.tres" type="Material" id=3]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "goal"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Plane:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.75, 0.75, 0.75 ), Vector3( 1, 1, 1 ) ]
+}
+
+[node name="goal" instance=ExtResource( 1 )]
+
+[node name="Cube" parent="." index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="Plane" parent="." index="2"]
+transform = Transform( 0.775, 0, 0, 0, 0.775, 0, 0, 0, 0.775, 0, 0, 0 )
+material/0 = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+autoplay = "goal"
+anims/goal = SubResource( 2 )

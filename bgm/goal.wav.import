@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goal.wav-1e75d7268e21ac97a4090b41ef46f5f1.sample"
+
+[deps]
+
+source_file="res://bgm/goal.wav"
+dest_files=[ "res://.import/goal.wav-1e75d7268e21ac97a4090b41ef46f5f1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

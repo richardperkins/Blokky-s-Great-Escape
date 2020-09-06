@@ -1,0 +1,378 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://TickManager.gd" type="Script" id=1]
+[ext_resource path="res://level_test.gd" type="Script" id=2]
+[ext_resource path="res://models/pickup.gd" type="Script" id=3]
+[ext_resource path="res://images/ui/icon_wait.png" type="Texture" id=4]
+[ext_resource path="res://images/ui/icon_cw.png" type="Texture" id=5]
+[ext_resource path="res://images/ui/icon_stop.png" type="Texture" id=6]
+[ext_resource path="res://images/ui/icon_pause.png" type="Texture" id=7]
+[ext_resource path="res://images/ui/icon_ccw.png" type="Texture" id=8]
+[ext_resource path="res://images/ui/icon_stop_disabled.png" type="Texture" id=9]
+[ext_resource path="res://images/ui/icon_walk.png" type="Texture" id=10]
+[ext_resource path="res://images/ui/icon_play.png" type="Texture" id=11]
+[ext_resource path="res://images/ui/success.png" type="Texture" id=12]
+[ext_resource path="res://tiles.meshlib" type="MeshLibrary" id=13]
+[ext_resource path="res://command_blocks/Rotate CCW.tscn" type="PackedScene" id=14]
+[ext_resource path="res://command_blocks/Rotate CW.tscn" type="PackedScene" id=15]
+[ext_resource path="res://fonts/number.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefabs/blokky/blokky.tscn" type="PackedScene" id=17]
+[ext_resource path="res://debug_console.tscn" type="PackedScene" id=18]
+[ext_resource path="res://models/pickups/nut.tscn" type="PackedScene" id=19]
+[ext_resource path="res://prefabs/goal.tscn" type="PackedScene" id=20]
+[ext_resource path="res://command_blocks/Move.tscn" type="PackedScene" id=21]
+[ext_resource path="res://command_blocks/Command Block.tscn" type="PackedScene" id=22]
+[ext_resource path="res://command_blocks_panel.tscn" type="PackedScene" id=23]
+[ext_resource path="res://command_blocks/Wait.tscn" type="PackedScene" id=24]
+[ext_resource path="res://command_blocks_controller.gd" type="Script" id=25]
+[ext_resource path="res://blokky_controller.gd" type="Script" id=26]
+[ext_resource path="res://prefabs/goal.gd" type="Script" id=27]
+[ext_resource path="res://MapController.gd" type="Script" id=28]
+[ext_resource path="res://play_button.gd" type="Script" id=29]
+[ext_resource path="res://stop_button.gd" type="Script" id=30]
+[ext_resource path="res://bgm/silly-fun-by-kevin-macleod-from-filmmusic-io.wav" type="AudioStream" id=31]
+[ext_resource path="res://images/blocky-dead.png" type="Texture" id=32]
+[ext_resource path="res://images/ui/oh-no.png" type="Texture" id=33]
+[ext_resource path="res://bgm/goal.wav" type="AudioStream" id=34]
+[ext_resource path="res://bgm/fail.wav" type="AudioStream" id=35]
+
+[sub_resource type="Animation" id=1]
+resource_name = "flashy_light"
+
+[sub_resource type="Environment" id=2]
+background_mode = 1
+background_color = Color( 0.113725, 0.0666667, 0.184314, 1 )
+ambient_light_color = Color( 0.219608, 0.117647, 0.498039, 1 )
+ambient_light_energy = 5.0
+dof_blur_far_distance = 15.0
+dof_blur_near_distance = 8.82
+dof_blur_near_transition = 2.0
+glow_enabled = true
+glow_intensity = 5.07
+glow_strength = 0.49
+glow_bloom = 0.07
+glow_blend_mode = 0
+glow_hdr_threshold = 0.32
+glow_hdr_luminance_cap = 34.49
+
+[sub_resource type="Animation" id=3]
+resource_name = "success"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 512, 256.638 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "success"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 512, 256.638 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 2 )
+_player = NodePath("../Level/Blokky")
+_tick_manager = NodePath("../Level/Tick Manager")
+next_level = "levels/level2.tscn"
+sfx_win = ExtResource( 34 )
+sfx_lose = ExtResource( 35 )
+sfx_bgm = ExtResource( 31 )
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 0.999999, 0.000635332, -0.0012255, -0.000633346, 0.999999, 0.00162163, 0.00122653, -0.00162085, 0.999998, 0, 0, 0 )
+mesh_library = ExtResource( 13 )
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PoolIntArray( -65536, 0, 655360, -65535, 0, 655360, -65534, 0, 655364, -2, 0, 4, -1, 0, 655360, -65536, 1, 655360, -65535, 1, 1074397184, -65534, 1, 655364, -2, 1, 4, -1, 1, 655360, -65536, 2, 1074790404, -65535, 2, 1048580, -65534, 2, 1048581, -2, 2, 5, -1, 2, 1048580, -65536, 65532, 1441796, -65535, 65532, 1441796, -65534, 65532, 655365, -2, 65532, 1441797, -1, 65532, 1441796, -65536, 65533, 655360, -65535, 65533, 655360, -65534, 65533, 655364, -2, 65533, 4, -1, 65533, 655360, -65536, 65534, 655360, -65535, 65534, 655360, -65534, 65534, 655364, -2, 65534, 4, -1, 65534, 655360, -65536, 65535, 655360, -65535, 65535, 655360, -65534, 65535, 655364, -2, 65535, 4, -1, 65535, 655360 )
+}
+script = ExtResource( 28 )
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Objects" type="Spatial" parent="."]
+
+[node name="Nut" parent="Objects" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00176334, 0.0343189, -2.04644 )
+script = ExtResource( 3 )
+
+[node name="goal2" parent="Objects" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+script = ExtResource( 27 )
+ui_win = NodePath("../../UI/Win")
+
+[node name="Tick Manager" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="CommandBlocks" parent="Tick Manager" instance=ExtResource( 23 )]
+script = ExtResource( 25 )
+_level_manager = NodePath("../../../Level")
+command_block_prefabs = [ ExtResource( 14 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 15 ) ]
+command_block_prefab = ExtResource( 22 )
+icon_blocks = [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 5 ) ]
+
+[node name="Blokky" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+script = ExtResource( 26 )
+
+[node name="ray_forward" type="RayCast" parent="Blokky"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Blokky"]
+anims/flashy_light = SubResource( 1 )
+
+[node name="Scene Settings" type="Spatial" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer2D" parent="Scene Settings"]
+stream = ExtResource( 31 )
+autoplay = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Scene Settings"]
+transform = Transform( 0.874416, 0.125573, 0.468644, -0.479162, 0.37513, 0.793525, -0.0761575, -0.918427, 0.38819, 7, 8, -0.308044 )
+light_color = Color( 1, 0.968627, 0.72549, 1 )
+light_energy = 1.5
+light_indirect_energy = 5.0
+shadow_enabled = true
+shadow_color = Color( 0.176471, 0.137255, 0.227451, 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="Scene Settings"]
+transform = Transform( -0.508953, -0.498469, -0.70178, -0.847132, 0.145372, 0.51111, -0.152753, 0.854632, -0.496257, -8.95989, 8, -0.304558 )
+light_color = Color( 0.72549, 0.956863, 1, 1 )
+light_indirect_energy = 5.0
+shadow_color = Color( 0.176471, 0.137255, 0.227451, 1 )
+
+[node name="Camera" type="Camera" parent="Scene Settings"]
+transform = Transform( 0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, -3, 14, 8 )
+environment = SubResource( 2 )
+current = true
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="Scene Settings/Camera"]
+transform = Transform( -0.0704142, -0.379798, -0.922386, -0.81651, 0.553125, -0.165421, 0.573021, 0.741489, -0.349057, 0.00352097, -0.0576406, 0.0686913 )
+visible = false
+light_energy = 10.0
+light_indirect_energy = 6.38
+directional_shadow_mode = 0
+directional_shadow_max_distance = 61.6
+
+[node name="UI" type="Spatial" parent="."]
+
+[node name="Debug Console" parent="UI" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Tick Play Controls" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play Button" type="ToolButton" parent="UI/Tick Play Controls"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 56.0
+margin_bottom = 52.0
+icon = ExtResource( 11 )
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+icon_play = ExtResource( 11 )
+icon_paused = ExtResource( 7 )
+
+[node name="Stop Button" type="ToolButton" parent="UI/Tick Play Controls"]
+anchor_left = 2.2
+anchor_right = 2.9
+anchor_bottom = 0.7
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 56.0
+margin_bottom = 52.0
+icon = ExtResource( 9 )
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+icon_disabled = ExtResource( 9 )
+icon_enabled = ExtResource( 6 )
+
+[node name="Current Tick" parent="UI/Tick Play Controls" instance=ExtResource( 16 )]
+text = "0"
+
+[node name="Win" type="Control" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="UI/Win"]
+modulate = Color( 1, 1, 1, 0.901961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -700.0
+margin_top = -518.0
+margin_right = 681.0
+margin_bottom = 499.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Win"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -208.0
+margin_right = 256.0
+margin_bottom = 48.638
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Win"]
+autoplay = "success"
+anims/success = SubResource( 3 )
+
+[node name="Next Level" type="Button" parent="UI/Win"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.0
+margin_top = -16.0
+margin_right = 94.0
+margin_bottom = 38.0
+text = "Next Level"
+
+[node name="Lose" type="Control" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="UI/Lose"]
+modulate = Color( 0.886275, 0.0431373, 0.0431373, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -700.0
+margin_top = -518.0
+margin_right = 681.0
+margin_bottom = 499.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Lose"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -145.0
+margin_right = 256.0
+margin_bottom = 111.638
+rect_scale = Vector2( 1, 1.05 )
+texture = ExtResource( 33 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Lose"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -116.335
+margin_top = -278.0
+margin_right = 139.665
+margin_bottom = -57.0
+rect_scale = Vector2( 1, 1.05 )
+texture = ExtResource( 32 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Lose"]
+autoplay = "success"
+anims/success = SubResource( 4 )
+
+[node name="Retry" type="Button" parent="UI/Lose"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.0
+margin_top = 61.4207
+margin_right = 94.0
+margin_bottom = 115.421
+text = "Next Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="UI/Tick Play Controls/Stop Button" to="UI/Tick Play Controls/Stop Button" method="_on_Stop_Button_pressed"]
+[connection signal="pressed" from="UI/Win/Next Level" to="." method="next_level"]
+[connection signal="pressed" from="UI/Lose/Retry" to="." method="retry"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blokky.obj-6a62c38bddb461c74032da3e86ea11b1.mesh"
+
+[deps]
+
+files=[ "res://.import/blokky.obj-6a62c38bddb461c74032da3e86ea11b1.mesh" ]
+
+source_file="res://models/blokky.obj"
+dest_files=[ "res://.import/blokky.obj-6a62c38bddb461c74032da3e86ea11b1.mesh", "res://.import/blokky.obj-6a62c38bddb461c74032da3e86ea11b1.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

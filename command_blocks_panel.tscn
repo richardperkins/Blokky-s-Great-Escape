@@ -1,0 +1,229 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://AddCommandBlock.gd" type="Script" id=1]
+[ext_resource path="res://images/ui/icon_wait.png" type="Texture" id=2]
+[ext_resource path="res://images/ui/icon_up.png" type="Texture" id=3]
+[ext_resource path="res://images/ui/icon_cw.png" type="Texture" id=4]
+[ext_resource path="res://images/ui/icon_ccw.png" type="Texture" id=5]
+[ext_resource path="res://images/ui/icon_walk.png" type="Texture" id=6]
+[ext_resource path="res://images/ui/icon_down.png" type="Texture" id=7]
+[ext_resource path="res://images/ui/icon_remove.png" type="Texture" id=8]
+[ext_resource path="res://theme.tres" type="Theme" id=9]
+[ext_resource path="res://images/ui/code_cursor.png" type="Texture" id=10]
+[ext_resource path="res://CommandBlockList.gd" type="Script" id=11]
+[ext_resource path="res://images/ui/icon_trash.png" type="Texture" id=12]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.109804, 0.160784, 0.196078, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.184998
+margin_top = -1.0
+margin_right = 0.185059
+margin_bottom = -1.0
+__meta__ = {
+"_edit_horizontal_guides_": [ -19.4232 ],
+"_edit_use_anchors_": false
+}
+
+[node name="Command Blocks" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -267.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 322.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blocks" type="Panel" parent="Command Blocks"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -124.646
+margin_top = 49.6663
+margin_right = 125.354
+margin_bottom = 299.666
+theme = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll View" type="ScrollContainer" parent="Command Blocks/Blocks"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Command Block" type="VBoxContainer" parent="Command Blocks/Blocks/Scroll View"]
+margin_right = 236.0
+rect_min_size = Vector2( 184, 0 )
+size_flags_horizontal = 3
+script = ExtResource( 11 )
+
+[node name="Add Blocks" type="Control" parent="Command Blocks"]
+anchor_right = 1.0
+margin_right = 1.52588e-05
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Command Blocks/Add Blocks"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -6.0
+margin_right = -1.52588e-05
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rotate CCW" type="ToolButton" parent="Command Blocks/Add Blocks"]
+margin_left = 24.246
+margin_top = -5.7557
+margin_right = 70.246
+margin_bottom = 38.2443
+icon = ExtResource( 5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move" type="ToolButton" parent="Command Blocks/Add Blocks"]
+margin_left = 72.246
+margin_top = -5.7557
+margin_right = 118.246
+margin_bottom = 38.2443
+icon = ExtResource( 6 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+block_type = 1
+
+[node name="Wait" type="ToolButton" parent="Command Blocks/Add Blocks"]
+margin_left = 120.246
+margin_top = -5.7557
+margin_right = 166.246
+margin_bottom = 38.2443
+icon = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+block_type = 2
+
+[node name="Rotate CW" type="ToolButton" parent="Command Blocks/Add Blocks"]
+margin_left = 168.246
+margin_top = -5.7557
+margin_right = 214.246
+margin_bottom = 38.2443
+icon = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+block_type = 3
+
+[node name="Block_controls" type="Control" parent="Command Blocks"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Panel" type="Panel" parent="Command Blocks/Block_controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Up" type="ToolButton" parent="Command Blocks/Block_controls"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 7.5
+margin_top = -22.0
+margin_right = 55.5
+margin_bottom = 22.0
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="ToolButton" parent="Command Blocks/Block_controls"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 47.5
+margin_top = -22.0
+margin_right = 95.5
+margin_bottom = 22.0
+icon = ExtResource( 7 )
+
+[node name="Remove" type="ToolButton" parent="Command Blocks/Block_controls"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -22.0
+margin_bottom = 22.0
+icon = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Remove2" type="ToolButton" parent="Command Blocks/Block_controls"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 11.0
+margin_top = -22.0
+margin_right = 69.0
+margin_bottom = 22.0
+icon = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code Cursor" type="TextureRect" parent="Command Blocks"]
+visible = false
+margin_left = -20.7653
+margin_top = 60.6663
+margin_right = 19.2347
+margin_bottom = 100.666
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Container" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Command Blocks/Block_controls/Up" to="Command Blocks/Blocks/Scroll View/Command Block" method="move_up"]
+[connection signal="pressed" from="Command Blocks/Block_controls/Down" to="Command Blocks/Blocks/Scroll View/Command Block" method="move_down"]
+[connection signal="pressed" from="Command Blocks/Block_controls/Remove" to="Command Blocks/Blocks/Scroll View/Command Block" method="remove"]
+[connection signal="pressed" from="Command Blocks/Block_controls/Remove2" to="Command Blocks/Blocks/Scroll View/Command Block" method="clear"]
