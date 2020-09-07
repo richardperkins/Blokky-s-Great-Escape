@@ -2,8 +2,9 @@
 
 [ext_resource path="res://images/ui/icon_ccw.png" type="Texture" id=1]
 [ext_resource path="res://images/ui/icon_star.png" type="Texture" id=2]
-[ext_resource path="res://theme.tres" type="Theme" id=3]
+[ext_resource path="res://misc/theme.tres" type="Theme" id=3]
 [ext_resource path="res://command_blocks/CommandBlockSelect.gd" type="Script" id=4]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.203922, 0.290196, 0.364706, 1 )

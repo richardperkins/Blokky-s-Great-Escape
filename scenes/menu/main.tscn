@@ -6,7 +6,7 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
-background_color = Color( 0.713726, 0.92549, 0.929412, 1 )
+background_color = Color( 0.431373, 0.945098, 0.886275, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -25,6 +25,9 @@ margin_top = 32.0
 margin_right = 256.0
 margin_bottom = 288.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureButton" type="TextureButton" parent="."]
 anchor_left = 0.5

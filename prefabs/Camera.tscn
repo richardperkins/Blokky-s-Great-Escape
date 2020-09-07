@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Environment" id=2]
+background_mode = 1
+background_color = Color( 0.113725, 0.0666667, 0.184314, 1 )
+ambient_light_color = Color( 0.184314, 0.137255, 0.309804, 1 )
+ambient_light_energy = 5.0
+dof_blur_far_distance = 15.0
+dof_blur_near_distance = 8.82
+dof_blur_near_transition = 2.0
+glow_enabled = true
+glow_intensity = 5.95
+glow_strength = 0.31
+glow_bloom = 0.06
+glow_blend_mode = 0
+glow_hdr_threshold = 0.32
+glow_hdr_luminance_cap = 34.49
+
+[node name="Camera" type="Camera"]
+transform = Transform( 0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, -3, 14, 8 )
+environment = SubResource( 2 )
+current = true
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( -0.0704142, -0.379798, -0.922386, -0.81651, 0.553125, -0.165421, 0.573021, 0.741489, -0.349057, 0.00352097, -0.0576406, 0.0686913 )
+visible = false
+light_energy = 10.0
+light_indirect_energy = 6.38
+directional_shadow_mode = 0
+directional_shadow_max_distance = 61.6

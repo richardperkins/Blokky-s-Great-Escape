@@ -13,4 +13,8 @@ func _ready():
 	pass # Replace with function body.
 
 func load_scene():
-	get_tree().change_scene(scene_dir + scene)
+	get_tree().change_scene("res://scenes/levels/level1.tscn")
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://scenes/levels/level1.tscn")

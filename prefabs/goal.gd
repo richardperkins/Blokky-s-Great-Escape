@@ -15,3 +15,4 @@ func _ready():
 
 func on_player_collision():
 	get_node(ui_win).set_visible(true)
+	get_tree().get_root().get_child(0).win()

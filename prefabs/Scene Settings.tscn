@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://bgm/silly-fun-by-kevin-macleod-from-filmmusic-io.wav" type="AudioStream" id=1]
+[ext_resource path="res://prefabs/Camera.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.113725, 0.0666667, 0.184314, 1 )
+ambient_light_color = Color( 0.184314, 0.137255, 0.309804, 1 )
+ambient_light_energy = 5.0
+dof_blur_far_distance = 15.0
+dof_blur_near_distance = 8.82
+dof_blur_near_transition = 2.0
+glow_enabled = true
+glow_intensity = 5.95
+glow_strength = 0.31
+glow_bloom = 0.06
+glow_blend_mode = 0
+glow_hdr_threshold = 0.32
+glow_hdr_luminance_cap = 34.49
+
+[node name="Scene Settings" type="Spatial"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.874416, 0.125573, 0.468644, -0.479162, 0.37513, 0.793525, -0.0761575, -0.918427, 0.38819, 7, 8, -0.308044 )
+light_color = Color( 1, 0.968627, 0.72549, 1 )
+light_energy = 2.0
+light_indirect_energy = 5.0
+shadow_enabled = true
+shadow_color = Color( 0.176471, 0.137255, 0.227451, 1 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( -0.508953, -0.498469, -0.70178, -0.847132, 0.145372, 0.51111, -0.152753, 0.854632, -0.496257, -8.95989, 8, -0.304558 )
+light_color = Color( 0.72549, 0.956863, 1, 1 )
+light_energy = 0.25
+light_indirect_energy = 5.0
+shadow_color = Color( 0.176471, 0.137255, 0.227451, 1 )
+
+[node name="Camera" type="Camera" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.866025, 0.433013, -0.25, 0, 0.5, 0.866025, 0.5, -0.75, 0.433013, -3, 14, 8 )
+environment = SubResource( 1 )
+current = true

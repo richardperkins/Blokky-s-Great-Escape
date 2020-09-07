@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://models/block_floor.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://models/block_floor_min.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://models/block_floor_edge.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://models/block_floor_round.obj" type="ArrayMesh" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="block_floor_min" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="block_floor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="block_floor_edge" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02313, -0.754915, 4.03295 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="block_floor_round" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82993, 1.14463, 2.87478 )
+mesh = ExtResource( 4 )
+material/0 = null
